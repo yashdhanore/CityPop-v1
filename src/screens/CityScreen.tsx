@@ -2,9 +2,9 @@ import { Text, View, TextInput, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React from "react";
-import {} from "react-native-vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const SearchBox = () => {
+const SearchBox = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={{ flex: 1, alignSelf: "stretch" }}>
       <View style={Styles.formatview}>
@@ -17,6 +17,13 @@ const SearchBox = () => {
           maxLength={100}
           style={Styles.input}
         />
+        <Icon.Button
+          name="search"
+          backgroundColor="#f46530"
+          onPress={() => navigation.navigate()}
+        >
+          Search
+        </Icon.Button>
       </View>
     </SafeAreaView>
   );
@@ -25,7 +32,7 @@ const SearchBox = () => {
 export function CityScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <SearchBox />
+      <SearchBox navigation={undefined} />
     </View>
   );
 }
