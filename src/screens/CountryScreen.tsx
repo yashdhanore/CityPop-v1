@@ -2,6 +2,7 @@ import { Text, View, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const SearchBox = () => {
   return (
@@ -16,6 +17,9 @@ const SearchBox = () => {
           maxLength={100}
           style={Styles.input}
         />
+        <Icon.Button name="search" backgroundColor="#f46530">
+          Search
+        </Icon.Button>
       </View>
     </SafeAreaView>
   );
