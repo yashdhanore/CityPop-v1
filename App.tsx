@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button,Pressable,StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import { Button,Pressable,StyleSheet, Text, View, TouchableOpacity, Image, ToastAndroid} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import * as React from 'react'
 import { CityScreen } from './src/screens/CityScreen'
 import { CountryScreen } from './src/screens/CountryScreen'
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 const StackNavigator = (
@@ -27,20 +28,22 @@ const StackNavigator = (
 function HomeScreen({navigation}: {navigation: any}) {
   return (
     <View style={styles.container}>
-      <Text>CityPop</Text>
+      <TouchableHighlight onPress={()=> ToastAndroid.show("Test Task for We Know IT", ToastAndroid.SHORT)}>
+      <Image source={require('./assets/Logo1.png')} style={{maxHeight:100}}/>
+      </TouchableHighlight>
+     
       <TouchableOpacity
-        style={styles.button}
+        style={styles.buttonContainer}
         onPress={() => navigation.navigate('Search By City')}
       >
-        <Text>Search By City</Text>
+        <Text style={styles.buttonTextContainer}>Search By City</Text>
       </TouchableOpacity>
 
-
       <TouchableOpacity
-        style={styles.button}
+        style={styles.buttonContainer}
         onPress={() => navigation.navigate('Search By Country')}
       >
-        <Text>Search By Country</Text>
+        <Text style={styles.buttonTextContainer}>Search By Country</Text>
       </TouchableOpacity>
 
     </View>
@@ -62,15 +65,25 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2a2e30',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button:{
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "#DDDDDD",
-    padding: 10
+  buttonContainer:{
+    marginVertical: 7,
+		height: 50,
+		marginHorizontal: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 15,
+		backgroundColor: '#f46530',
+    alignSelf:'stretch'
+  },
+  buttonTextContainer:{
+    textTransform: 'uppercase',
+		color: '#fff',
+		fontSize: 16,
+		fontWeight: 'normal',
   },
 });
 
