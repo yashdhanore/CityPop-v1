@@ -3,17 +3,22 @@ import { Button,StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import * as React from 'react'
+import CityScreen from './screens'
 
 const Stack = createStackNavigator();
 const StackNavigator = (
   <Stack.Navigator>
     <Stack.Screen
-      name="Home"
-      component={HomeScreen} // <----
+      name="CityPop"
+      component={HomeScreen} 
     />
     <Stack.Screen
-      name="Details"
-      component={CityScreen} // <----
+      name="Search By City"
+      component={CityScreen} 
+    />
+    <Stack.Screen
+      name="Search By Country"
+      component={CountryScreen} 
     />
   </Stack.Navigator>
 );
@@ -21,7 +26,9 @@ const StackNavigator = (
 function HomeScreen({navigation}: {navigation: any}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text style={{
+
+      }}>Home Screen</Text>
       <Button
         title="Search By City"
         onPress={() => navigation.navigate('Search By City')}
@@ -34,13 +41,7 @@ function HomeScreen({navigation}: {navigation: any}) {
   );
 }
 
-function CityScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Seacrhed by City</Text>
-    </View>
-  );
-}
+
 
 function CountryScreen() {
   return (
