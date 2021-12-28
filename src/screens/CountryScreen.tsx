@@ -1,10 +1,10 @@
 import {Text, View } from 'react-native';
 
-
-export function CityScreen() {
+export function CountryScreen() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Searched by City</Text>
+        <Text>Seacrhed by Country</Text>
       </View>
     );
   }
+  

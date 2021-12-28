@@ -3,7 +3,8 @@ import { Button,StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import * as React from 'react'
-import CityScreen from './screens'
+import { CityScreen } from './src/screens/CityScreen'
+import { CountryScreen } from './src/screens/CountryScreen'
 
 const Stack = createStackNavigator();
 const StackNavigator = (
@@ -43,13 +44,6 @@ function HomeScreen({navigation}: {navigation: any}) {
 
 
 
-function CountryScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Seacrhed by Country</Text>
-    </View>
-  );
-}
 
 export default function App() {
   return (
