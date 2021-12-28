@@ -6,6 +6,7 @@ import * as React from 'react'
 import { CityScreen } from './src/screens/CityScreen'
 import { CountryScreen } from './src/screens/CountryScreen'
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import {Styles} from './src/library/Styles'
 
 const Stack = createStackNavigator();
 const StackNavigator = (
@@ -27,23 +28,23 @@ const StackNavigator = (
 
 function HomeScreen({navigation}: {navigation: any}) {
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <TouchableHighlight onPress={()=> ToastAndroid.show("Test Task for We Know IT", ToastAndroid.SHORT)}>
       <Image source={require('./assets/Logo1.png')} style={{maxHeight:100}}/>
       </TouchableHighlight>
      
       <TouchableOpacity
-        style={styles.buttonContainer}
+        style={Styles.buttonContainer}
         onPress={() => navigation.navigate('Search By City')}
       >
-        <Text style={styles.buttonTextContainer}>Search By City</Text>
+        <Text style={Styles.buttonTextContainer}>Search By City</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.buttonContainer}
+        style={Styles.buttonContainer}
         onPress={() => navigation.navigate('Search By Country')}
       >
-        <Text style={styles.buttonTextContainer}>Search By Country</Text>
+        <Text style={Styles.buttonTextContainer}>Search By Country</Text>
       </TouchableOpacity>
 
     </View>
@@ -62,28 +63,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2a2e30',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer:{
-    marginVertical: 7,
-		height: 50,
-		marginHorizontal: 10,
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderRadius: 15,
-		backgroundColor: '#f46530',
-    alignSelf:'stretch'
-  },
-  buttonTextContainer:{
-    textTransform: 'uppercase',
-		color: '#fff',
-		fontSize: 16,
-		fontWeight: 'normal',
-  },
-});
 
