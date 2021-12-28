@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button,StyleSheet, Text, View } from 'react-native';
+import { Button,Pressable,StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import * as React from 'react'
@@ -26,24 +26,26 @@ const StackNavigator = (
 
 function HomeScreen({navigation}: {navigation: any}) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{
-
-      }}>Home Screen</Text>
-      <Button
-        title="Search By City"
+    <View style={styles.container}>
+      <Text>CityPop</Text>
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => navigation.navigate('Search By City')}
-      />
-      <Button
-        title="Search By Country"
+      >
+        <Text>Search By City</Text>
+      </TouchableOpacity>
+
+
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => navigation.navigate('Search By Country')}
-      />
+      >
+        <Text>Search By Country</Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
-
-
-
 
 export default function App() {
   return (
@@ -64,4 +66,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#DDDDDD",
+    padding: 10
+  },
 });
+
