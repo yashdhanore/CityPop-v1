@@ -3,8 +3,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { CitySearchResult } from "./CitySearchResult";
 
-const SearchBox = ({ navigation }: { navigation: any }) => {
+const SearchBox = () => {
   return (
     <SafeAreaView style={{ flex: 1, alignSelf: "stretch" }}>
       <View style={Styles.formatview}>
@@ -17,22 +18,22 @@ const SearchBox = ({ navigation }: { navigation: any }) => {
           maxLength={100}
           style={Styles.input}
         />
-        <Icon.Button
-          name="search"
-          backgroundColor="#f46530"
-          onPress={() => navigation.navigate()}
-        >
-          Search
-        </Icon.Button>
       </View>
     </SafeAreaView>
   );
 };
 
-export function CityScreen() {
+export function CityScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <SearchBox navigation={undefined} />
+      <SearchBox />
+      <Icon.Button
+        name="search"
+        backgroundColor="#f46530"
+        onPress={() => navigation.navigate("CityResult")}
+      >
+        Search
+      </Icon.Button>
     </View>
   );
 }

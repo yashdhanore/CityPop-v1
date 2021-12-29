@@ -9,14 +9,6 @@ import { CitySearchResult } from "../screens/CitySearchResult";
 interface RoutesProps {}
 
 const Stack = createStackNavigator();
-const StackNavigator = (
-  <Stack.Navigator>
-    <Stack.Screen name="CityPop" component={HomeScreen} />
-    <Stack.Screen name="Search By City" component={CityScreen} />
-    <Stack.Screen name="Search By Country" component={CountryScreen} />
-    <Stack.Screen name="CityResult" component={CitySearchResult} />
-  </Stack.Navigator>
-);
 
 export const Routes: React.FC<RoutesProps> = ({}) => {
   return (
@@ -36,6 +28,11 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
           name="Search By Country"
           component={CountryScreen}
           options={{ title: "Search By Country" }}
+        />
+        <Stack.Screen
+          name="CityResult"
+          component={CitySearchResult}
+          options={{ title: "Results" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
