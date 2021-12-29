@@ -1,41 +1,40 @@
 import { Text, View, TextInput, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CitySearchResult } from "./CitySearchResult";
+import axios from "axios";
 
-const SearchBox = () => {
-  return (
-    <SafeAreaView style={{ flex: 1, alignSelf: "stretch" }}>
-      <View style={Styles.formatview}>
-        <Text style={Styles.text}>Search By City</Text>
-        <TextInput
-          placeholder="Enter a city"
-          autoCorrect={true}
-          multiline={false}
-          numberOfLines={2}
-          maxLength={100}
-          style={Styles.input}
-        />
-      </View>
-    </SafeAreaView>
-  );
-};
-
-export function CityScreen({ navigation }: { navigation: any }) {
+export function CityScreen({ navigation }) {
+  const [text, setText] = useState("");
+  const handleInput = (event) => {
+    let temp = event.nativeEvent.text;
+    setText(temp);
+    console.log(temp);
+  };
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <SearchBox />
-      <Icon.Button
-        name="search"
-        backgroundColor="#f46530"
-        onPress={() => navigation.navigate("CityResult")}
+      <TextInput
+        placeholder="Enter a city"
+        autoCorrect={true}
+        multiline={false}
+        numberOfLines={2}
+        maxLength={100}
+        onChange={handleInput}
+        style={Styles.input}
+      />
+      <TouchableOpacity
+        onPress={() =>
+          text
+            ? navigation.navigate("CityResult", { phoneNumber: text })
+            : alert("Please Input the text")
+        }
       >
-        Search
-      </Icon.Button>
+        <View style={Styles.buttonContainer}>
+          <Text style={Styles.text}>NEXT</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
-
-export default SearchBox;
