@@ -3,10 +3,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React from "react";
 
-export function CountrySearchResult() {
+export function CountrySearchResult({ navigation, route }) {
+  const { country } = route.params;
   return (
-    <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-    ></View>
+    <View>
+      <Text>{country}</Text>
+    </View>
   );
 }

@@ -5,10 +5,10 @@ import React from "react";
 const axios = require("axios").default;
 
 export function CitySearchResult({ navigation, route }) {
-  const { phoneNumber } = route.params;
+  const { city } = route.params;
   return (
     <View>
-      <Text>{phoneNumber}</Text>
+      <Text>{city}</Text>
     </View>
   );
 }

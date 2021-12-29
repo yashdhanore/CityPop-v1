@@ -32,7 +32,7 @@ export function CityScreen({ navigation }) {
         }
       >
         <View style={Styles.buttonContainer}>
-          <Text style={Styles.text}>NEXT</Text>
+          <Text style={Styles.text}>Search</Text>
         </View>
       </TouchableOpacity>
     </View>
