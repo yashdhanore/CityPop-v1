@@ -34,6 +34,7 @@ export const Styles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 25,
     fontWeight: "normal",
+    alignSelf: "center",
   },
   formatview: {
     flex: 1,

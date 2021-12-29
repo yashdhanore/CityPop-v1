@@ -6,8 +6,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const SearchBox = () => {
   return (
-    <SafeAreaView style={{ flex: 1, alignSelf: "stretch" }}>
-      <View style={Styles.formatview}>
+    <SafeAreaView
+      style={{
+        justifyContent: "center",
+        alignSelf: "stretch",
+        position: "relative",
+        top: 10,
+      }}
+    >
+      <View>
         <Text style={Styles.text}>Search By Country</Text>
         <TextInput
           placeholder="Enter a country"
@@ -26,9 +33,10 @@ export default SearchBox;
 
 export function CountryScreen({ navigation }: { navigation: any }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center" }}>
       <SearchBox />
       <Icon.Button
+        style={{}}
         name="search"
         backgroundColor="#f46530"
         onPress={() => navigation.navigate("CountryResult")}
