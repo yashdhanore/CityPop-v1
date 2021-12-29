@@ -10,16 +10,13 @@ const SearchBox = () => {
       <View style={Styles.formatview}>
         <Text style={Styles.text}>Search By Country</Text>
         <TextInput
-          placeholder="Enter a city"
+          placeholder="Enter a country"
           autoCorrect={true}
           multiline={false}
           numberOfLines={2}
           maxLength={100}
           style={Styles.input}
         />
-        <Icon.Button name="search" backgroundColor="#f46530">
-          Search
-        </Icon.Button>
       </View>
     </SafeAreaView>
   );
@@ -27,10 +24,17 @@ const SearchBox = () => {
 
 export default SearchBox;
 
-export function CountryScreen() {
+export function CountryScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <SearchBox />
+      <Icon.Button
+        name="search"
+        backgroundColor="#f46530"
+        onPress={() => navigation.navigate("CountryResult")}
+      >
+        Search
+      </Icon.Button>
     </View>
   );
 }
