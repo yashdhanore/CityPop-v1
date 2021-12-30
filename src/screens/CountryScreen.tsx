@@ -25,7 +25,7 @@ export function CountryScreen({ navigation }) {
       <TouchableOpacity
         onPress={() =>
           text
-            ? navigation.navigate("CountryResult", { phoneNumber: text })
+            ? navigation.navigate("CountryResult", { countryinput: text })
             : alert("Please Input the text")
         }
       >

@@ -27,7 +27,7 @@ export function CityScreen({ navigation }) {
       <TouchableOpacity
         onPress={() =>
           text
-            ? navigation.navigate("CityResult", { phoneNumber: text })
+            ? navigation.navigate("CityResult", { cityinput: text })
             : alert("Please Input the text")
         }
       >

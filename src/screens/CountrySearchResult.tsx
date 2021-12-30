@@ -4,10 +4,10 @@ import { Styles } from "../library/Styles";
 import React from "react";
 
 export function CountrySearchResult({ navigation, route }) {
-  const { country } = route.params;
+  const { countryinput } = route.params;
   return (
     <View>
-      <Text>{country}</Text>
+      <Text>{countryinput}</Text>
     </View>
   );
 }
