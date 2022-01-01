@@ -15,19 +15,6 @@ export function CountrySearchResult({ navigation, route }) {
     getpop();
   }, []);
 
-  // const getpop = async () => {
-  //   const response = await fetch(
-  //     "http://api.geonames.org/searchJSON?q=london&maxRows=10&username=weknowit"
-  //   );
-  //   const data = await response.json();
-  //   setPopulation(data);
-  //   out[0] = population
-  //   console.log(out);
-  //   //console.log(population);
-  // };
-
-  //"http://api.geonames.org/searchJSON?q=india&maxRows=10&username=weknowit&orderby=population&cities=cities15000
-
   function getpop() {
     PopulationAPI.get("http://api.geonames.org/searchJSON", {
       params: {
@@ -40,9 +27,6 @@ export function CountrySearchResult({ navigation, route }) {
     })
       .then(function (response) {
         setPopulation(response.data);
-        //console.log(cityinput);
-        //console.log(population);
-        //console.log(population.geonames.map((item) => item.name)[0]);
       })
       .catch(function (error) {
         console.log(error);

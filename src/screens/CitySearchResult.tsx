@@ -23,19 +23,6 @@ export function CitySearchResult({ navigation, route }) {
     getpop();
   }, []);
 
-  // const getpop = async () => {
-  //   const response = await fetch(
-  //     "http://api.geonames.org/searchJSON?q=london&maxRows=10&username=weknowit"
-  //   );
-  //   const data = await response.json();
-  //   setPopulation(data);
-  //   out[0] = population
-  //   console.log(out);
-  //   //console.log(population);
-  // };
-
-  //"searchJSON?q=stockholm&maxRows=10&username=weknowit"
-
   function getpop() {
     PopulationAPI.get("http://api.geonames.org/searchJSON", {
       params: {
@@ -46,9 +33,6 @@ export function CitySearchResult({ navigation, route }) {
     })
       .then(function (response) {
         setPopulation(response.data);
-        //console.log(cityinput);
-        //console.log(population);
-        //console.log(population.geonames.map((item) => item.name)[0]);
       })
       .catch(function (error) {
         console.log(error);
@@ -97,11 +81,6 @@ export function CitySearchResult({ navigation, route }) {
           ))[0]
         }
       </Text>
-      {/* <FlatList
-        data={population.geonames}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
-      ></FlatList> */}
     </View>
   );
 }
