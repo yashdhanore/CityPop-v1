@@ -34,7 +34,7 @@ export function CitySearchResult({ navigation, route }) {
   // };
 
   function getpop() {
-    PopulationAPI.get("searchJSON?q=sweden&maxRows=10&username=weknowit")
+    PopulationAPI.get("searchJSON?q=stockholm&maxRows=10&username=weknowit")
       .then(function (response) {
         setPopulation(response.data);
         console.log(population.geonames.map((item) => item.name)[0]);
@@ -49,13 +49,40 @@ export function CitySearchResult({ navigation, route }) {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Text>
         {
           population.geonames.map((item) => (
-            <TouchableOpacity style={{}}>
-              <Text style={Styles.text}>{item.name}</Text>
-            </TouchableOpacity>
+            <View style={{}}>
+              <View style={{ alignSelf: "stretch" }}>
+                <Text style={{ textTransform: "uppercase" }}>{item.name}</Text>
+              </View>
+              <View style={{ alignSelf: "stretch" }}>
+                <Text>POPULATION</Text>
+                <Text>{item.population}</Text>
+              </View>
+            </View>
+            // <View
+            //   style={{ flex: 1, justifyContent: "center", alignSelf: "center" }}
+            // >
+            //   <Text style={Styles.text}>{item.name}</Text>
+            //   <View
+            //     style={{
+            //       width: "100%",
+            //       borderRadius: 12,
+            //       borderWidth: 2,
+            //     }}
+            //   >
+            //     <Text style={Styles.text}>Population</Text>
+            //     <Text style={Styles.text}>{item.population}</Text>
+            //   </View>
+            // </View>
           ))[0]
         }
       </Text>

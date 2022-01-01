@@ -45,4 +45,11 @@ export const Styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "stretch",
   },
+  result: {
+    flex: 1,
+    backgroundColor: "beige",
+    borderWidth: 2,
+    borderRadius: 12,
+    alignSelf: "stretch",
+  },
 });
