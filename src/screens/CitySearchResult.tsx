@@ -13,10 +13,12 @@ import React, { useEffect, useState } from "react";
 import PopulationAPI from "../config/City";
 import { Geoname, GeoOutput } from "../config/Interfaces";
 import { FlatList } from "react-native-gesture-handler";
+import { axios } from "axios/dist/axios";
 
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
   const [population, setPopulation] = useState<GeoOutput>();
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     getpop();
@@ -33,11 +35,23 @@ export function CitySearchResult({ navigation, route }) {
   //   //console.log(population);
   // };
 
+  //"searchJSON?q=stockholm&maxRows=10&username=weknowit"
+
   function getpop() {
-    PopulationAPI.get("searchJSON?q=stockholm&maxRows=10&username=weknowit")
+    setloading(false);
+    console.log("inside getpop" + loading);
+    PopulationAPI.get("http://api.geonames.org/searchJSON", {
+      params: {
+        q: cityinput,
+        maxRows: 10,
+        username: "weknowit",
+      },
+    })
       .then(function (response) {
         setPopulation(response.data);
-        console.log(population.geonames.map((item) => item.name)[0]);
+        //console.log(cityinput);
+        //console.log(population);
+        //console.log(population.geonames.map((item) => item.name)[0]);
       })
       .catch(function (error) {
         console.log(error);
