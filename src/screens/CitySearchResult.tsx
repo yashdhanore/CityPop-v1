@@ -18,7 +18,6 @@ import { axios } from "axios/dist/axios";
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
   const [population, setPopulation] = useState<GeoOutput>();
-  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     getpop();
@@ -38,8 +37,6 @@ export function CitySearchResult({ navigation, route }) {
   //"searchJSON?q=stockholm&maxRows=10&username=weknowit"
 
   function getpop() {
-    setloading(false);
-    console.log("inside getpop" + loading);
     PopulationAPI.get("http://api.geonames.org/searchJSON", {
       params: {
         q: cityinput,
