@@ -58,7 +58,17 @@ export function CountrySearchResult({ navigation, route }) {
       <FlatList
         data={population.geonames}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
+        renderItem={({ item }) => (
+          <View>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("CityResult", { cityinput: item.name })
+              }
+            >
+              <Text>{item.name}</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       ></FlatList>
     </View>
   );
