@@ -7,13 +7,11 @@ import {
   ActivityIndicator,
   ProgressBarAndroidComponent,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
-import PopulationAPI from "../config/City";
 import { Geoname, GeoOutput } from "../config/Interfaces";
 import { FlatList } from "react-native-gesture-handler";
-import { axios } from "axios/dist/axios";
+import axios from "axios";
 
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
@@ -24,13 +22,14 @@ export function CitySearchResult({ navigation, route }) {
   }, []);
 
   function getpop() {
-    PopulationAPI.get("http://api.geonames.org/searchJSON", {
-      params: {
-        q: cityinput,
-        maxRows: 10,
-        username: "weknowit",
-      },
-    })
+    axios
+      .get("http://api.geonames.org/searchJSON", {
+        params: {
+          q: cityinput,
+          maxRows: 10,
+          username: "weknowit",
+        },
+      })
       .then(function (response) {
         setPopulation(response.data);
       })

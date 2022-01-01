@@ -2,9 +2,9 @@ import { Text, View, TextInput, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
-import PopulationAPI from "../config/City";
 import { GeoOutput } from "../config/Interfaces";
 import { FlatList } from "react-native-gesture-handler";
+import axios from "axios";
 
 export function CountrySearchResult({ navigation, route }) {
   const { countryinput } = route.params;
@@ -16,15 +16,16 @@ export function CountrySearchResult({ navigation, route }) {
   }, []);
 
   function getpop() {
-    PopulationAPI.get("http://api.geonames.org/searchJSON", {
-      params: {
-        q: countryinput,
-        maxRows: 10,
-        username: "weknowit",
-        orderby: "population",
-        cities: "cities15000",
-      },
-    })
+    axios
+      .get("http://api.geonames.org/searchJSON", {
+        params: {
+          q: countryinput,
+          maxRows: 10,
+          username: "weknowit",
+          orderby: "population",
+          cities: "cities15000",
+        },
+      })
       .then(function (response) {
         setPopulation(response.data);
       })
