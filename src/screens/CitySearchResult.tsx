@@ -43,23 +43,27 @@ export function CitySearchResult({ navigation, route }) {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>
         {
           population.geonames.map((item) => (
-            <View style={{}}>
-              <View style={{ alignSelf: "stretch" }}>
-                <Text style={{ textTransform: "uppercase" }}>{item.name}</Text>
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: "#2a2e30",
+                alignItems: "center",
+                justifyContent: "center",
+                alignSelf: "stretch",
+              }}
+            >
+              <View style={Styles.result}>
+                <Text style={Styles.buttonTextContainer}>{item.name}</Text>
               </View>
-              <View style={{ alignSelf: "stretch" }}>
-                <Text>POPULATION</Text>
-                <Text>{item.population}</Text>
+              <View style={Styles.result}>
+                <Text style={Styles.buttonTextContainer}>POPULATION</Text>
+                <Text style={Styles.buttonTextContainer}>
+                  {item.population}
+                </Text>
               </View>
             </View>
             // <View

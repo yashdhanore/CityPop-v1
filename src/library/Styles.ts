@@ -46,10 +46,13 @@ export const Styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   result: {
-    flex: 1,
-    backgroundColor: "beige",
-    borderWidth: 2,
+    marginVertical: 7,
+    height: 50,
+    marginHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 12,
+    backgroundColor: "#f46530",
     alignSelf: "stretch",
   },
 });

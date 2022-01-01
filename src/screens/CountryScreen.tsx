@@ -1,5 +1,4 @@
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
