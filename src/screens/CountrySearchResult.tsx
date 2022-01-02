@@ -5,6 +5,8 @@ import {
   Button,
   TouchableOpacity,
   ActivityIndicator,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
@@ -56,22 +58,63 @@ export function CountrySearchResult({ navigation, route }) {
   }
 
   return (
-    <View>
-      <FlatList
-        data={population.geonames}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("CityResult", { cityinput: item.name })
-              }
-            >
-              <Text>{item.name}</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      ></FlatList>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "#2a2e30",
+          alignItems: "center",
+          justifyContent: "center",
+          alignSelf: "stretch",
+        }}
+      >
+        <View
+          style={{
+            marginTop: Dimensions.get("window").height / 5,
+          }}
+        >
+          <Text
+            style={{
+              textTransform: "uppercase",
+              fontSize: 40,
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            {countryinput}
+          </Text>
+        </View>
+        <View
+          style={{
+            marginTop: Dimensions.get("window").height / 9,
+            alignSelf: "stretch",
+          }}
+        >
+          <FlatList
+            scrollEnabled={true}
+            data={population.geonames}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={Styles.countryButtons}
+                onPress={() =>
+                  navigation.navigate("CityResult", { cityinput: item.name })
+                }
+              >
+                <Text style={{ fontSize: 20, color: "black" }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          ></FlatList>
+        </View>
+      </View>
     </View>
   );
 }
