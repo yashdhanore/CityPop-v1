@@ -12,34 +12,64 @@ import React, { useEffect, useState } from "react";
 import { Geoname, GeoOutput } from "../config/Interfaces";
 import { FlatList } from "react-native-gesture-handler";
 import axios from "axios";
+import * as ReactBootStrap from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
   const [population, setPopulation] = useState<GeoOutput>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getpop();
   }, []);
 
-  function getpop() {
-    axios
-      .get("http://api.geonames.org/searchJSON", {
-        params: {
-          q: cityinput,
-          maxRows: 10,
-          username: "weknowit",
-        },
-      })
-      .then(function (response) {
-        setPopulation(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  const getpop = async () => {
+    setLoading(true);
+    try {
+      const data = await axios
+        .get("http://api.geonames.org/searchJSON", {
+          params: {
+            q: cityinput,
+            maxRows: 10,
+            username: "weknowit",
+          },
+        })
+        .then(function (response) {
+          setPopulation(response.data);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // function getpop() {
+  //   axios
+  //     .get("http://api.geonames.org/searchJSON", {
+  //       params: {
+  //         q: cityinput,
+  //         maxRows: 10,
+  //         username: "weknowit",
+  //       },
+  //     })
+  //     .then(function (response) {
+  //       setPopulation(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   if (!population) {
     return null;
+  }
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={"red"} />
+      </View>
+    );
   }
 
   return (

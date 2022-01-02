@@ -15,24 +15,25 @@ export function CountrySearchResult({ navigation, route }) {
     getpop();
   }, []);
 
-  function getpop() {
-    axios
-      .get("http://api.geonames.org/searchJSON", {
-        params: {
-          q: countryinput,
-          maxRows: 10,
-          username: "weknowit",
-          orderby: "population",
-          cities: "cities15000",
-        },
-      })
-      .then(function (response) {
-        setPopulation(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  const getpop = async () => {
+    try {
+      const data = await axios
+        .get("http://api.geonames.org/searchJSON", {
+          params: {
+            q: countryinput,
+            maxRows: 10,
+            username: "weknowit",
+            orderby: "population",
+            cities: "cities15000",
+          },
+        })
+        .then(function (response) {
+          setPopulation(response.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (!population) {
     return null;
