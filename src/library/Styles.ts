@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 export const Styles = StyleSheet.create({
   container: {
@@ -43,6 +43,31 @@ export const Styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "stretch",
+  },
+
+  cityName: {
+    marginVertical: 7,
+    height: 50,
+    marginHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 12,
+    backgroundColor: "#2a2e30",
+    alignSelf: "stretch",
+    position: "absolute",
+    marginLeft: "auto",
+    top: Dimensions.get("window").height / 5,
+    marginRight: "auto",
+    width: Dimensions.get("window").width,
+  },
+  populationBox: {
+    marginHorizontal: 6,
+    minHeight: 125,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    backgroundColor: "#f46530",
     alignSelf: "stretch",
   },
   result: {

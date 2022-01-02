@@ -14,6 +14,7 @@ import { FlatList } from "react-native-gesture-handler";
 import axios from "axios";
 import * as ReactBootStrap from "react-bootstrap";
 import { Spinner } from "react-bootstrap";
+import { Dimensions } from "react-native";
 
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
@@ -25,7 +26,6 @@ export function CitySearchResult({ navigation, route }) {
   }, []);
 
   const getpop = async () => {
-    setLoading(true);
     try {
       const data = await axios
         .get("http://api.geonames.org/searchJSON", {
@@ -43,22 +43,6 @@ export function CitySearchResult({ navigation, route }) {
       console.log(error);
     }
   };
-  // function getpop() {
-  //   axios
-  //     .get("http://api.geonames.org/searchJSON", {
-  //       params: {
-  //         q: cityinput,
-  //         maxRows: 10,
-  //         username: "weknowit",
-  //       },
-  //     })
-  //     .then(function (response) {
-  //       setPopulation(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
 
   if (!population) {
     return null;
@@ -73,47 +57,79 @@ export function CitySearchResult({ navigation, route }) {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>
-        {
-          population.geonames.map((item) => (
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: "#2a2e30",
-                alignItems: "center",
-                justifyContent: "center",
-                alignSelf: "stretch",
-              }}
-            >
-              <View style={Styles.result}>
-                <Text style={Styles.buttonTextContainer}>{item.name}</Text>
-              </View>
-              <View style={Styles.result}>
-                <Text style={Styles.buttonTextContainer}>POPULATION</Text>
-                <Text style={Styles.buttonTextContainer}>
-                  {item.population}
-                </Text>
-              </View>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {
+        population.geonames.map((item) => (
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "#2a2e30",
+              alignItems: "center",
+              justifyContent: "center",
+              alignSelf: "stretch",
+            }}
+          >
+            <View style={Styles.cityName}>
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  position: "absolute",
+                  fontSize: 40,
+                  color: "white",
+                  fontWeight: "bold",
+                }}
+              >
+                {item.name}
+              </Text>
             </View>
-            // <View
-            //   style={{ flex: 1, justifyContent: "center", alignSelf: "center" }}
-            // >
-            //   <Text style={Styles.text}>{item.name}</Text>
-            //   <View
-            //     style={{
-            //       width: "100%",
-            //       borderRadius: 12,
-            //       borderWidth: 2,
-            //     }}
-            //   >
-            //     <Text style={Styles.text}>Population</Text>
-            //     <Text style={Styles.text}>{item.population}</Text>
-            //   </View>
-            // </View>
-          ))[0]
-        }
-      </Text>
+
+            <View style={Styles.populationBox}>
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  color: "#fff",
+                  fontSize: 20,
+                  top: -12,
+                  fontWeight: "normal",
+                }}
+              >
+                POPULATION
+              </Text>
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  color: "#fff",
+                  fontSize: 40,
+                  fontWeight: "normal",
+                }}
+              >
+                {item.population}
+              </Text>
+            </View>
+          </View>
+          // <View
+          //   style={{ flex: 1, justifyContent: "center", alignSelf: "center" }}
+          // >
+          //   <Text style={Styles.text}>{item.name}</Text>
+          //   <View
+          //     style={{
+          //       width: "100%",
+          //       borderRadius: 12,
+          //       borderWidth: 2,
+          //     }}
+          //   >
+          //     <Text style={Styles.text}>Population</Text>
+          //     <Text style={Styles.text}>{item.population}</Text>
+          //   </View>
+          // </View>
+        ))[0]
+      }
     </View>
   );
 }

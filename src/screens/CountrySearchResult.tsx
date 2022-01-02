@@ -1,4 +1,11 @@
-import { Text, View, TextInput, Button, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
@@ -8,7 +15,7 @@ import axios from "axios";
 
 export function CountrySearchResult({ navigation, route }) {
   const { countryinput } = route.params;
-
+  const [loading, setLoading] = useState(true);
   const [population, setPopulation] = useState<GeoOutput>();
 
   useEffect(() => {
@@ -29,6 +36,7 @@ export function CountrySearchResult({ navigation, route }) {
         })
         .then(function (response) {
           setPopulation(response.data);
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
@@ -37,6 +45,14 @@ export function CountrySearchResult({ navigation, route }) {
 
   if (!population) {
     return null;
+  }
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={"red"} />
+      </View>
+    );
   }
 
   return (
