@@ -19,7 +19,7 @@ import axios from "axios";
 
 export function CountrySearchResult({ navigation, route }) {
   const { countryinput } = route.params;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [population, setPopulation] = useState<GeoOutput>();
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export function CountrySearchResult({ navigation, route }) {
 
   const getpop = async () => {
     try {
+      setLoading(true);
       const data = await axios
         .get("http://api.geonames.org/searchJSON", {
           params: {
@@ -49,14 +50,6 @@ export function CountrySearchResult({ navigation, route }) {
 
   if (!population) {
     return null;
-  }
-
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color={"red"} />
-      </View>
-    );
   }
 
   if (population.geonames.length == 0) {
@@ -103,25 +96,31 @@ export function CountrySearchResult({ navigation, route }) {
             alignSelf: "stretch",
           }}
         >
-          <View>
-            <FlatList
-              scrollEnabled={false}
-              data={population.geonames.slice(0, 5)}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={Styles.countryButtons}
-                  onPress={() =>
-                    navigation.navigate("CityResult", { cityinput: item.name })
-                  }
-                >
-                  <Text style={{ fontSize: 20, color: "black" }}>
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-              )}
-            ></FlatList>
-          </View>
+          {!loading ? (
+            <View>
+              <FlatList
+                scrollEnabled={false}
+                data={population.geonames.slice(0, 5)}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={Styles.countryButtons}
+                    onPress={() =>
+                      navigation.navigate("CityResult", {
+                        cityinput: item.name,
+                      })
+                    }
+                  >
+                    <Text style={{ fontSize: 20, color: "black" }}>
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              ></FlatList>
+            </View>
+          ) : (
+            <ActivityIndicator color={"white"} size={60}></ActivityIndicator>
+          )}
         </View>
       </View>
     </View>

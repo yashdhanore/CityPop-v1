@@ -28,6 +28,7 @@ export function CitySearchResult({ navigation, route }) {
 
   const getpop = async () => {
     try {
+      setLoading(true);
       const data = await axios
         .get("http://api.geonames.org/searchJSON", {
           params: {
@@ -47,14 +48,6 @@ export function CitySearchResult({ navigation, route }) {
 
   if (!population) {
     return null;
-  }
-
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color={"red"} />
-      </View>
-    );
   }
 
   if (population.geonames.length <= 0) {
@@ -107,16 +100,23 @@ export function CitySearchResult({ navigation, route }) {
               >
                 POPULATION
               </Text>
-              <Text
-                style={{
-                  textTransform: "uppercase",
-                  color: "#fff",
-                  fontSize: 40,
-                  fontWeight: "normal",
-                }}
-              >
-                {item.population}
-              </Text>
+              {!loading ? (
+                <Text
+                  style={{
+                    textTransform: "uppercase",
+                    color: "#fff",
+                    fontSize: 40,
+                    fontWeight: "normal",
+                  }}
+                >
+                  {item.population}
+                </Text>
+              ) : (
+                <ActivityIndicator
+                  color={"white"}
+                  size={60}
+                ></ActivityIndicator>
+              )}
             </View>
           </View>
           // <View
