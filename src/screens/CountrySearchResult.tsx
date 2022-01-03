@@ -100,7 +100,7 @@ export function CountrySearchResult({ navigation, route }) {
           <View>
             <FlatList
               scrollEnabled={false}
-              data={population.geonames}
+              data={population.geonames.slice(0, 5)}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({ item }) => (
                 <TouchableOpacity
