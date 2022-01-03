@@ -1,5 +1,7 @@
 import {
+  Animated,
   Dimensions,
+  Easing,
   Image,
   Text,
   ToastAndroid,
@@ -10,6 +12,7 @@ import {
 import * as React from "react";
 import { Styles } from "../library/Styles";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useEffect } from "react";
 
 export function HomeScreen({ navigation }: { navigation: any }) {
   return (
@@ -38,6 +41,9 @@ export function HomeScreen({ navigation }: { navigation: any }) {
       >
         <Text style={Styles.buttonTextContainer}>Search By Country</Text>
       </TouchableOpacity>
+      <Image
+        source={require("C:UsersYashDownloadsimage2vector (1).svg")}
+      ></Image>
     </SafeAreaView>
   );
 }

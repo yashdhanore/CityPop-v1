@@ -77,7 +77,6 @@ export function CountrySearchResult({ navigation, route }) {
         <View
           style={{
             flex: 0.3,
-
             alignSelf: "stretch",
           }}
         >
