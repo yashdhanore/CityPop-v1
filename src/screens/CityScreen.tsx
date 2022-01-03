@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
@@ -23,7 +24,6 @@ export function CityScreen({ navigation }) {
   const handleInput = (event) => {
     let temp = event.nativeEvent.text;
     setText(temp);
-    console.log(temp);
   };
   return (
     <KeyboardAvoidingView
@@ -75,7 +75,7 @@ export function CityScreen({ navigation }) {
               onPress={() =>
                 text
                   ? navigation.navigate("CityResult", { cityinput: text })
-                  : alert("Please Input the text")
+                  : Alert.alert("No input", "Please enter a city name")
               }
             >
               <View

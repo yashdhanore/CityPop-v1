@@ -9,10 +9,11 @@ import {
 } from "react-native";
 import * as React from "react";
 import { Styles } from "../library/Styles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export function HomeScreen({ navigation }: { navigation: any }) {
   return (
-    <View style={Styles.container}>
+    <SafeAreaView style={Styles.container}>
       <TouchableHighlight
         onPress={() =>
           ToastAndroid.show("Test Task for We Know IT", ToastAndroid.SHORT)
@@ -37,6 +38,6 @@ export function HomeScreen({ navigation }: { navigation: any }) {
       >
         <Text style={Styles.buttonTextContainer}>Search By Country</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }

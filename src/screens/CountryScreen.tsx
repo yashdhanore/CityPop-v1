@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   Platform,
+  Alert,
 } from "react-native";
 import { Styles } from "../library/Styles";
 import React, { useState } from "react";
@@ -18,7 +19,6 @@ export function CountryScreen({ navigation }) {
   const handleInput = (event) => {
     let temp = event.nativeEvent.text;
     setText(temp);
-    console.log(temp);
   };
   return (
     <KeyboardAvoidingView
@@ -70,7 +70,7 @@ export function CountryScreen({ navigation }) {
               onPress={() =>
                 text
                   ? navigation.navigate("CountryResult", { countryinput: text })
-                  : alert("Please Input the text")
+                  : Alert.alert("No input", "Please enter a country name")
               }
             >
               <View

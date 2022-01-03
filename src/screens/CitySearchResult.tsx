@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   ProgressBarAndroidComponent,
+  Alert,
 } from "react-native";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
@@ -54,6 +55,11 @@ export function CitySearchResult({ navigation, route }) {
         <ActivityIndicator size="large" color={"red"} />
       </View>
     );
+  }
+
+  if (population.geonames.length <= 0) {
+    navigation.goBack();
+    Alert.alert("Invalid country name", "Please input a valid city name");
   }
 
   return (
