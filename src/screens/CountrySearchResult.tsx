@@ -76,7 +76,9 @@ export function CountrySearchResult({ navigation, route }) {
       >
         <View
           style={{
-            marginTop: Dimensions.get("window").height / 5,
+            flex: 0.3,
+
+            alignSelf: "stretch",
           }}
         >
           <Text
@@ -85,6 +87,7 @@ export function CountrySearchResult({ navigation, route }) {
               fontSize: 40,
               color: "white",
               fontWeight: "bold",
+              textAlign: "center",
             }}
           >
             {countryinput}
