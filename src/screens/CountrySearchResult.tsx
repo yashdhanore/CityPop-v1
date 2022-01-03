@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   ScrollView,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
@@ -96,23 +97,25 @@ export function CountrySearchResult({ navigation, route }) {
             alignSelf: "stretch",
           }}
         >
-          <FlatList
-            scrollEnabled={true}
-            data={population.geonames}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                style={Styles.countryButtons}
-                onPress={() =>
-                  navigation.navigate("CityResult", { cityinput: item.name })
-                }
-              >
-                <Text style={{ fontSize: 20, color: "black" }}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            )}
-          ></FlatList>
+          <View>
+            <FlatList
+              scrollEnabled={false}
+              data={population.geonames}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={Styles.countryButtons}
+                  onPress={() =>
+                    navigation.navigate("CityResult", { cityinput: item.name })
+                  }
+                >
+                  <Text style={{ fontSize: 20, color: "black" }}>
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+              )}
+            ></FlatList>
+          </View>
         </View>
       </View>
     </View>

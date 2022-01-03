@@ -23,22 +23,22 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
         <Stack.Screen
           name="Search By City"
           component={CityScreen}
-          options={{ title: "Search By City" }}
+          options={{ title: "CityPop" }}
         />
         <Stack.Screen
           name="Search By Country"
           component={CountryScreen}
-          options={{ title: "Search By Country" }}
+          options={{ title: "CityPop" }}
         />
         <Stack.Screen
           name="CityResult"
           component={CitySearchResult}
-          options={{ title: "Results" }}
+          options={{ title: "CityPop" }}
         />
         <Stack.Screen
           name="CountryResult"
           component={CountrySearchResult}
-          options={{ title: "Results" }}
+          options={{ title: "CityPop" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
