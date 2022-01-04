@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   ProgressBarAndroidComponent,
   Alert,
+  ImageBackground,
 } from "react-native";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
@@ -62,8 +63,10 @@ export function CitySearchResult({ navigation, route }) {
     ]);
   }
   return (
-    <View
+    <ImageBackground
+      source={require("../../assets/Bg.png")}
       style={{
+        height: Dimensions.get("window").height,
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
@@ -74,27 +77,25 @@ export function CitySearchResult({ navigation, route }) {
           <View
             style={{
               flex: 1,
-              backgroundColor: "#2a2e30",
               alignItems: "center",
               justifyContent: "center",
               alignSelf: "stretch",
             }}
           >
-            <View style={Styles.cityName}>
-              <Text
-                style={{
-                  textTransform: "uppercase",
-                  position: "absolute",
-                  fontSize: 40,
-                  color: "white",
-                  fontWeight: "bold",
-                }}
-              >
-                {item.name}
-              </Text>
-            </View>
+            <Text
+              style={{
+                marginBottom: 50,
+                flex: 0.2,
+                textTransform: "uppercase",
+                fontSize: 40,
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              {item.name}
+            </Text>
 
-            <View style={Styles.populationBox}>
+            <View style={[Styles.populationBox]}>
               <Text
                 style={{
                   textTransform: "uppercase",
@@ -124,9 +125,10 @@ export function CitySearchResult({ navigation, route }) {
                 ></ActivityIndicator>
               )}
             </View>
+            <View style={{ flex: 0.2 }}></View>
           </View>
         ))[0]
       }
-    </View>
+    </ImageBackground>
   );
 }

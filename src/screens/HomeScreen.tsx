@@ -33,7 +33,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
         >
           <Image
             source={require("../../assets/CityPop.png")}
-            style={{ flex: 0.5, backgroundColor: "red" }}
+            style={{ flex: 0.5 }}
           />
         </TouchableHighlight>
         <View style={{ flex: 0.6, alignItems: "center" }}>
