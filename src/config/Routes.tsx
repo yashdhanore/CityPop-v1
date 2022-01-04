@@ -1,4 +1,4 @@
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { CityScreen } from "../screens/CityScreen";
@@ -7,6 +7,9 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { CitySearchResult } from "../screens/CitySearchResult";
 import { CountrySearchResult } from "../screens/CountrySearchResult";
 
+/**
+ * Handles the main Stack of the app and adds all stacks screen in navigator container
+ */
 interface RoutesProps {}
 
 const Stack = createStackNavigator();

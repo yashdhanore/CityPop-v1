@@ -15,6 +15,11 @@ import { Styles } from "../library/Styles";
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+/**
+ * Displays alert if no input text is entered and search is pressed
+ * @param navigation
+ * @returns A Keyboardavoidingview with textinput space for users to search the country
+ */
 export function CountryScreen({ navigation }) {
   const [text, setText] = useState("");
   const handleInput = (event) => {

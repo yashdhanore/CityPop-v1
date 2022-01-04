@@ -1,28 +1,22 @@
 import {
   Text,
   View,
-  TextInput,
-  Button,
-  TouchableOpacity,
   ActivityIndicator,
-  ProgressBarAndroidComponent,
   Alert,
   ImageBackground,
 } from "react-native";
 import { Styles } from "../library/Styles";
 import React, { useEffect, useState } from "react";
-import { Geoname, GeoOutput } from "../config/Interfaces";
-import { FlatList } from "react-native-gesture-handler";
+import { GeoOutput } from "../config/Interfaces";
 import axios from "axios";
-import * as ReactBootStrap from "react-bootstrap";
-import { Spinner } from "react-bootstrap";
 import { Dimensions } from "react-native";
 
 /**
- *
+ * @description The function calls geoname API and gathers the response in variable population which is of type GeoOutput.
+ * it also shows loading screen and gives an error if country does not exist.
  * @param navigation
  * @param route
- * @returns A View that displays the City and its population
+ * @returns A view that displays city name along with its population
  */
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
@@ -33,6 +27,7 @@ export function CitySearchResult({ navigation, route }) {
     getpop();
   }, []);
 
+  //API Call
   const getpop = async () => {
     try {
       setLoading(true);
@@ -57,6 +52,7 @@ export function CitySearchResult({ navigation, route }) {
     return null;
   }
 
+  //Check to throw alert
   if (population.geonames.length <= 0) {
     Alert.alert("Invalid city name!", "Please input a valid city name", [
       { text: "OK", onPress: () => navigation.goBack() },
@@ -116,7 +112,7 @@ export function CitySearchResult({ navigation, route }) {
                     fontWeight: "normal",
                   }}
                 >
-                  {item.population}
+                  {item.population} {/*Items are displayed here */}
                 </Text>
               ) : (
                 <ActivityIndicator
@@ -127,7 +123,7 @@ export function CitySearchResult({ navigation, route }) {
             </View>
             <View style={{ flex: 0.2 }}></View>
           </View>
-        ))[0]
+        ))[0] //to only get the top most result
       }
     </ImageBackground>
   );

@@ -20,6 +20,12 @@ import { CitySearchResult } from "./CitySearchResult";
 import axios from "axios";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+/**
+ * Displays alert if no input text is entered and search is pressed
+ * @param navigation
+ * @returns A Keyboardavoidingview with textinput space for users to search the city
+ */
+
 export function CityScreen({ navigation }) {
   const [text, setText] = useState("");
   const handleInput = (event) => {

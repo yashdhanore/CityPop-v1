@@ -14,11 +14,11 @@ import { FlatList } from "react-native-gesture-handler";
 import axios from "axios";
 
 /**
- * @description The function calls geoname API and gathers the response in @param population which is of type GeoOutput.
+ * @description The function calls geoname API and gathers the response in variable population which is of type GeoOutput.
  * it also shows loading screen and gives an error if country does not exist.
  * @param navigation
  * @param route
- * @returns A view that displays country name along with top 5 cities in the country based on population (Sorted)
+ * @returns A view that displays country name along with top 5 cities in the country based on population (Sorted).
  */
 export function CountrySearchResult({ navigation, route }) {
   const { countryinput } = route.params;

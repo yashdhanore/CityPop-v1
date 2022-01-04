@@ -1,3 +1,7 @@
+/**
+ * Interfaces to handle the incoming response when API is called
+ */
+
 export interface GeoOutput {
   totalResultsCount: number;
   geonames: Geoname[];
