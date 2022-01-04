@@ -9,6 +9,7 @@ import {
   Dimensions,
   Keyboard,
   Alert,
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Styles } from "../library/Styles";
@@ -59,8 +60,10 @@ export function CountrySearchResult({ navigation, route }) {
   }
 
   return (
-    <View
+    <ImageBackground
+      source={require("../../assets/Bg.png")}
       style={{
+        height: Dimensions.get("window").height,
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
@@ -69,7 +72,6 @@ export function CountrySearchResult({ navigation, route }) {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#2a2e30",
           alignItems: "center",
           justifyContent: "center",
           alignSelf: "stretch",
@@ -114,7 +116,7 @@ export function CountrySearchResult({ navigation, route }) {
                       })
                     }
                   >
-                    <Text style={{ fontSize: 20, color: "black" }}>
+                    <Text style={{ fontSize: 20, color: "white" }}>
                       {item.name}
                     </Text>
                   </TouchableOpacity>
@@ -126,6 +128,6 @@ export function CountrySearchResult({ navigation, route }) {
           )}
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
