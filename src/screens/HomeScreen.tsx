@@ -41,9 +41,6 @@ export function HomeScreen({ navigation }: { navigation: any }) {
       >
         <Text style={Styles.buttonTextContainer}>Search By Country</Text>
       </TouchableOpacity>
-      <Image
-        source={require("C:UsersYashDownloadsimage2vector (1).svg")}
-      ></Image>
     </SafeAreaView>
   );
 }

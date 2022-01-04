@@ -17,6 +17,12 @@ import * as ReactBootStrap from "react-bootstrap";
 import { Spinner } from "react-bootstrap";
 import { Dimensions } from "react-native";
 
+/**
+ *
+ * @param navigation
+ * @param route
+ * @returns A View that displays the City and its population
+ */
 export function CitySearchResult({ navigation, route }) {
   const { cityinput } = route.params;
   const [population, setPopulation] = useState<GeoOutput>();
@@ -119,21 +125,6 @@ export function CitySearchResult({ navigation, route }) {
               )}
             </View>
           </View>
-          // <View
-          //   style={{ flex: 1, justifyContent: "center", alignSelf: "center" }}
-          // >
-          //   <Text style={Styles.text}>{item.name}</Text>
-          //   <View
-          //     style={{
-          //       width: "100%",
-          //       borderRadius: 12,
-          //       borderWidth: 2,
-          //     }}
-          //   >
-          //     <Text style={Styles.text}>Population</Text>
-          //     <Text style={Styles.text}>{item.population}</Text>
-          //   </View>
-          // </View>
         ))[0]
       }
     </View>
