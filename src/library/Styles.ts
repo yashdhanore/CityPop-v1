@@ -13,7 +13,7 @@ export const Styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 15,
+    borderRadius: 50,
     backgroundColor: "#f46530",
     alignSelf: "stretch",
   },

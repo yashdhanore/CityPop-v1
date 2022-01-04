@@ -20,9 +20,38 @@ export function HomeScreen({ navigation }: { navigation: any }) {
     <SafeAreaView style={Styles.container}>
       <ImageBackground
         source={require("../../assets/Bg.png")}
-        style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+        style={{
+          flex: 1,
+          minHeight: Dimensions.get("window").height,
+          justifyContent: "center",
+        }}
       >
         <TouchableHighlight
+          onPress={() =>
+            ToastAndroid.show("Test Task for We Know IT", ToastAndroid.SHORT)
+          }
+        >
+          <Image
+            source={require("../../assets/CityPop.png")}
+            style={{ flex: 0.5, backgroundColor: "red" }}
+          />
+        </TouchableHighlight>
+        <View style={{ flex: 0.6, alignItems: "center" }}>
+          <TouchableOpacity
+            style={[Styles.buttonContainer]}
+            onPress={() => navigation.navigate("Search By City")}
+          >
+            <Text style={[Styles.buttonTextContainer]}>Search By City</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={Styles.buttonContainer}
+            onPress={() => navigation.navigate("Search By Country")}
+          >
+            <Text style={Styles.buttonTextContainer}>Search By Country</Text>
+          </TouchableOpacity>
+        </View>
+        {/* <TouchableHighlight
           onPress={() =>
             ToastAndroid.show("Test Task for We Know IT", ToastAndroid.SHORT)
           }
@@ -45,7 +74,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           onPress={() => navigation.navigate("Search By Country")}
         >
           <Text style={Styles.buttonTextContainer}>Search By Country</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </ImageBackground>
     </SafeAreaView>
   );
