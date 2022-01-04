@@ -57,10 +57,10 @@ export function CitySearchResult({ navigation, route }) {
   }
 
   if (population.geonames.length <= 0) {
-    navigation.goBack();
-    Alert.alert("Invalid country name", "Please input a valid city name");
+    Alert.alert("Invalid city name!", "Please input a valid city name", [
+      { text: "OK", onPress: () => navigation.goBack() },
+    ]);
   }
-
   return (
     <View
       style={{

@@ -52,9 +52,10 @@ export function CountrySearchResult({ navigation, route }) {
     return null;
   }
 
-  if (population.geonames.length == 0) {
-    navigation.goBack();
-    Alert.alert("Invalid country name", "Please input a valid country name");
+  if (population.geonames.length <= 0) {
+    Alert.alert("Invalid country name!", "Please input a valid country name", [
+      { text: "OK", onPress: () => navigation.goBack() },
+    ]);
   }
 
   return (

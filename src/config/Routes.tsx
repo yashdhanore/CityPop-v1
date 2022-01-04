@@ -6,11 +6,6 @@ import { CountryScreen } from "../screens/CountryScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { CitySearchResult } from "../screens/CitySearchResult";
 import { CountrySearchResult } from "../screens/CountrySearchResult";
-import {
-  initialWindowSafeAreaInsets,
-  SafeAreaProvider,
-  SafeAreaView,
-} from "react-native-safe-area-context";
 
 interface RoutesProps {}
 
@@ -18,36 +13,34 @@ const Stack = createStackNavigator();
 
 export const Routes: React.FC<RoutesProps> = ({}) => {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="CityPop"
-            component={HomeScreen}
-            options={{ title: "CityPop" }}
-          />
-          <Stack.Screen
-            name="Search By City"
-            component={CityScreen}
-            options={{ title: "CityPop" }}
-          />
-          <Stack.Screen
-            name="Search By Country"
-            component={CountryScreen}
-            options={{ title: "CityPop" }}
-          />
-          <Stack.Screen
-            name="CityResult"
-            component={CitySearchResult}
-            options={{ title: "CityPop" }}
-          />
-          <Stack.Screen
-            name="CountryResult"
-            component={CountrySearchResult}
-            options={{ title: "CityPop" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="CityPop"
+          component={HomeScreen}
+          options={{ title: "CityPop" }}
+        />
+        <Stack.Screen
+          name="Search By City"
+          component={CityScreen}
+          options={{ title: "CityPop" }}
+        />
+        <Stack.Screen
+          name="Search By Country"
+          component={CountryScreen}
+          options={{ title: "CityPop" }}
+        />
+        <Stack.Screen
+          name="CityResult"
+          component={CitySearchResult}
+          options={{ title: "CityPop" }}
+        />
+        <Stack.Screen
+          name="CountryResult"
+          component={CountrySearchResult}
+          options={{ title: "CityPop" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
